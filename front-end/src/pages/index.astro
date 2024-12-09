@@ -41,7 +41,7 @@ import Fondo from "../layouts/Fondo.astro";
     </nav>
   </header>
   <main>
-    <div class="p-20 flex">
+    <div transition:name={'main-${slug}'} class="p-20 flex">
       <img
         src={image.src}
         alt="Foto Johan Leal"
@@ -60,6 +60,5 @@ import Fondo from "../layouts/Fondo.astro";
         funcionales y atractivas.
       </p>
     </div>
-    <div></div>
   </main>
 </Fondo>

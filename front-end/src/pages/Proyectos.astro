@@ -1,42 +1,110 @@
 ---
 const title = "Mis proyectos";
 import Fondo from "../layouts/Fondo.astro";
+import {
+    FaLaravel,
+    FaHtml5,
+    FaCss3Alt,
+    FaJs,
+    FaReact,
+    FaNodeJs,
+    FaPython,
+    FaJava,
+} from "react-icons/fa";
+import {
+    SiTypescript,
+    SiDjango,
+    SiSpringboot,
+    SiTailwindcss
+} from "react-icons/si"
+const proyectos = [
+  {
+    nombre: "Pagina de gestion de cursos para institutos educativos",
+    descripcion:
+      "Una aplicacion para registrar y gestionar estudiantes y profesores de una institucion educativa, principalmente enfocada a los cursos",
+    tecnologias: [
+      { nombre: "Laravel", icono: FaLaravel },
+      { nombre: "HTML", icono: FaHtml5 },
+      { nombre: "CSS", icono: FaCss3Alt },
+      { nombre: "TypeScripte", icono: SiTypescript },
+    ],
+    enlace: "#",
+  },
+  {
+    nombre: "Karaoki",
+    descripcion: "Aplicativo para gestionar listas de reproduccion de un establecimiento de karaoke permitiendo a los usuarios pedir canciones y gestionarlas de acuerdo a las personas que esten en la mesa",
+    tecnologias: [
+      { nombre: "React", icono: FaReact },
+      { nombre: "HTML", icono: FaHtml5 },
+      { nombre: "CSS", icono: FaCss3Alt },
+      { nombre: "Django", icono: SiDjango },
+    ],
+    enlace: "#",
+  },
+];
 ---
 
 <Fondo>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-          rel="stylesheet"
-        />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{title}</title>
-      </head>
-      <header class="flex flex-col justify-start items-center font-chau">
-        <h1 class="font-bold text-9xl">PORTAFOLIO</h1>
-        <h2 class="text-4xl mt-2">Johan Augusto Leal Cañon</h2>
-        <h3 class="text-2xl mt-2">Desarrollador de Software</h3>
-        <nav>
-          <ul class="flex space-x-4 mt-9">
-            <li>
-              <a href="/" class="text-4xl p-8 hover:text-white">Sobre Mi</a>
-            </li>
-            <li>
-              <a
-                
-                class="text-4xl text-white p-8">Mis Proyectos</a
-              >
-            </li>
-            <li>
-              <a href={'Habilidades'} class="text-4xl hover:text-white p-8">Mis Habilidades</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        
-      </main>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <header class="flex flex-col justify-start items-center font-chau">
+    <h1 class="font-bold text-9xl">PORTAFOLIO</h1>
+    <h2 class="text-4xl mt-2">Johan Augusto Leal Cañon</h2>
+    <h3 class="text-2xl mt-2">Desarrollador de Software</h3>
+    <nav>
+      <ul class="flex space-x-4 mt-9">
+        <li>
+          <a href="/" class="text-4xl p-8 hover:text-white">Sobre Mi</a>
+        </li>
+        <li>
+          <a class="text-4xl text-white p-8">Mis Proyectos</a>
+        </li>
+        <li>
+          <a href={"Habilidades"} class="text-4xl hover:text-white p-8"
+            >Mis Habilidades</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="flex flex-wrap justify-center items-center font-chau mt-10">
+      {
+        proyectos.map((proyecto) => (
+          <div class="w-1/2 p-4">
+            <div class="bg-gray-200 p-4 rounded-2xl">
+              <h1>
+                <strong>Nombre proyecto:</strong> {proyecto.nombre}
+              </h1>
+              <h2>
+                <strong>Descripción del proyecto:</strong> <br />
+              </h2>
+              <p class="font-sans text-1xl">{proyecto.descripcion}</p>
+              <h3>Tecnologías utilizadas</h3>
+              <ul class="flex space-x-2">
+                {proyecto.tecnologias.map((tecnologia) => (
+                  <li class="flex items-center space-x-1">
+                    <tecnologia.icono />
+                    <span>{tecnologia.nombre}</span>
+                  </li>
+                ))}
+              </ul>
+              <section class="bg-red-800 w-32 h-10 justify-center flex-wrap flex font-chau content-center items-center rounded-2xl mt-2">
+                <a href={proyecto.enlace}>Ir al proyecto</a>
+              </section>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </main>
 </Fondo>
